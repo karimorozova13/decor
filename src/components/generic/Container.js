@@ -16,9 +16,9 @@ const Wrap = styled.div`
     flex-wrap: initial !important;
   }
 
-  @media (min-width: 576px) {
+  /* @media (min-width: 576px) {
     max-width: 540px;
-  }
+  } */
   @media (min-width: 768px) {
     max-width: 720px;
   }

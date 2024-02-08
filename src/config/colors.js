@@ -6,4 +6,5 @@ export const colors = {
   btnColor: "#a5a5a5",
   secodaryText: "#5e5e5e",
   border: "#d0d0d0",
+  mainBlack: "#333333",
 };
