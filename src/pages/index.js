@@ -1,6 +1,9 @@
+import GallerySection from "@/components/GallerySection";
+import Footer from "@/components/generic/Footer";
 import Header from "@/components/generic/Header";
 import Hero from "@/components/Hero";
 import MeetUs from "@/components/MeetUs";
+import WhatWeDo from "@/components/WhatWeDo";
 import Head from "next/head";
 
 export default function Home() {
@@ -15,6 +18,9 @@ export default function Home() {
         <Header />
         <Hero />
         <MeetUs/>
+        <WhatWeDo/>
+        <GallerySection/>
+        <Footer/>
     </>
   );
 }

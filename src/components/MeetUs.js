@@ -25,10 +25,8 @@ width: 100%;
 border: 2px solid #fff;
 border-radius: 5px;
 overflow: hidden;
-margin-top: -100px;
-@media only screen and (max-width: 767px) {
- margin-top: -140px;   
-}
+margin-top: -130px;
+
 `
 
 const MeetUs = ()=> {

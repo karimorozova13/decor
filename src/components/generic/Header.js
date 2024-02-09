@@ -4,6 +4,8 @@ import { TbMenu } from "react-icons/tb";
 import { CiLock, CiUnlock } from "react-icons/ci";
 import { colors } from "@/config/colors";
 import Container from "./Container";
+import { RiContactsLine } from "react-icons/ri";
+import Modal from "./Modal";
 
 const Wrap = styled.div`
   position: absolute;
@@ -78,10 +80,11 @@ const Header = () => {
         <TbMenu size={30} />
       </MenuIcon>
       <LogIcon onClick={() => setIsLogin(!isLogin)}>
-        {isLogin ? <CiUnlock size={30} /> : <CiLock size={30} />}
+      <RiContactsLine size={20}/>
       </LogIcon>
 </Icons>
       </Container>
+      {isLogin && <Modal closeModal={()=> setIsLogin(false)}/>}
     </Wrap>
   );
 };

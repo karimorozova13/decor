@@ -6,16 +6,13 @@ const Wrap = styled.div`
   padding-bottom: ${({ pb }) => `${pb}px`};
   background-color: ${({ bg }) => bg};
   position: relative;
-  border-right:${({borderRight})=>`2px solid ${borderRight}`};
-  border-left:${({borderLeft})=>`2px solid ${borderLeft}`};
-  border-top:${({borderTop})=>`2px solid ${borderTop}`};
   border-bottom:${({borderBottom})=>`2px solid ${borderBottom}`};
 
 `;
 
-const Section = ({ pt = 50, pb = 150, bg, children, className,borderRight='transparent',borderLeft='transparent',borderBottom='transparent',borderTop='transparent' }) => {
+const Section = ({ pt = 50, pb = 150, bg, children, className,borderBottom='transparent',}) => {
   return (
-    <Wrap pt={pt} pb={pb} bg={bg} className={className} borderRight={borderRight} borderLeft={borderLeft} borderBottom={borderBottom} borderTop={borderTop}>
+    <Wrap pt={pt} pb={pb} bg={bg} className={className}  borderBottom={borderBottom} >
       {children}
     </Wrap>
   );
