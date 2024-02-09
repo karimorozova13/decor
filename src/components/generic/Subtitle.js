@@ -7,7 +7,7 @@ const Des = styled.h2`
   line-height: 1.33;
   color: ${colors.secodaryText};
   position: relative;
-  padding-bottom: 20px;
+  padding-bottom: ${({pb})=>`${pb}px`};
   &::after {
     content: "";
     position: absolute;
@@ -20,10 +20,13 @@ const Des = styled.h2`
     border-radius: 3px;
     display: block;
   }
+  @media only screen  and (max-width: 767px) {
+    text-align: center;
+  }
 `;
 
-const Subtitle = ({ des }) => {
-  return <Des>{des}</Des>;
+const Subtitle = ({ des, pb=20 }) => {
+  return <Des pb={pb}>{des}</Des>;
 };
 
 export default Subtitle;

@@ -7,4 +7,5 @@ export const colors = {
   secodaryText: "#5e5e5e",
   border: "#d0d0d0",
   mainBlack: "#333333",
+  bgAlpha: 'rgba(255,255,255,0.5)'
 };

@@ -4,12 +4,16 @@ import styled from "styled-components";
 
 const Heading = styled.h2`
   font-size: 45px;
-  line-height: 1.33;
   color: ${colors.secodaryText};
+  margin-bottom: ${({mb})=>`${mb}px`};
+
+  @media only screen  and (max-width: 767px) {
+    text-align: center;
+  }
 `;
 
-const Title = ({ title }) => {
-  return <Heading>{title}</Heading>;
+const Title = ({ title, mb=0 }) => {
+  return <Heading mb={mb}>{title}</Heading>;
 };
 
 export default Title;
