@@ -63,7 +63,8 @@ width: 60px;
 
 const WhatWeDo = ()=> {
     const {width} = useWindowSize()
-return <Section pt={0} pb={0} bg={colors.mainWhite} >
+return <div id="what">
+<Section pt={0} pb={0} bg={colors.mainWhite} id="what" borderBottom={colors.border}>
       {width > 849 &&  <Logo><p><span>{'Celebration'}</span>{' decor'}</p></Logo>}
 
                 <Container>
@@ -82,17 +83,17 @@ return <Section pt={0} pb={0} bg={colors.mainWhite} >
                         <Text>
                             <Subtitle pb={10}
                                 des={
-                                    "We specialize in floristry and decorating any events:"
+                                    "We are specialized in floristry and decoration of any events:"
                                 }
                                 />
                                 <Subtitle pb={10}
                                 des={
-                                "Stylish weddings,children's parties, bridal shower , private evenings , etc."
+                                "Weddings,children's birthday, bridal shower, gender party, private evenings, etc."
                                 }
                             />
                             <Subtitle pb={10}
                                 des={
-                                    "And also we organize floral workshops"
+                                    "We also organize floral workshops"
                                 }
                             />
                         </Text>
@@ -100,7 +101,7 @@ return <Section pt={0} pb={0} bg={colors.mainWhite} >
                     </Sides>
                     </Content>
                 </Container>
-</Section>
+</Section></div>
 }
 
 export default WhatWeDo;

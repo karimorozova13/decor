@@ -7,6 +7,9 @@ import Link from 'next/link'
 import { FaFacebookF,FaInstagram } from "react-icons/fa";
 import SocialMediaList from './SocialMediaList'
 import Modal from './Modal'
+import { FaWhatsapp , FaViber, FaTelegram} from "react-icons/fa6";
+import { BsTelephone } from "react-icons/bs";
+import { TfiEmail } from 'react-icons/tfi'
 
 const Content = styled.div`
 display: flex;
@@ -29,7 +32,11 @@ padding: 7px;
 const SocialMedia = styled.div`
 display: flex;
 align-items: center;
+flex-wrap: wrap;
 gap: 10px;
+@media only screen and (max-width: 441px) {
+  justify-content: center;
+}
 `
 
 const Line = styled.span`
@@ -55,8 +62,21 @@ const Copy = styled.p`
   text-align: center;
   padding-top: 40px;
 `;
+const PhoneWrap = styled(Link)`
+display: flex;
+align-items: center;
+gap: 5px;
+color: ${colors.secodaryText};
+ :hover {
+  p {
+    text-decoration: underline;
+  }
+ }
+
+`
 const Footer = () => {
     const [isContactModal, setIsContactModal] = useState()
+
   return (
   <Section pb={40} bg={colors.mainAccent}>
     <Container>
@@ -65,18 +85,40 @@ const Footer = () => {
             <SocialMediaList/>
             
             <SocialMedia>
-<InternalLink href={'/'}>{'About'}</InternalLink>
+<InternalLink href={'#about'}>{'About'}</InternalLink>
 <Line/>
 
-<InternalLink href={'/'}>{'Services'}</InternalLink>
+<InternalLink href={'#what'}>{'Services'}</InternalLink>
 <Line/>
-
-<InternalLink href={'/'}>{'Gallery'}</InternalLink>
+<InternalLink href={'#reviews'}>{'Reviews'}</InternalLink>
+<Line/>
+<InternalLink href={'/gallery'}>{'Gallery'}</InternalLink>
 <Line/>
 
 <InternalLink as={'div'} onClick={()=>setIsContactModal(true)}>{'Contacts'}</InternalLink>
 
             </SocialMedia>
+            <PhoneWrap href={'mailto:lenaryapolova2@gmail.com'}> 
+              <TfiEmail size={20} color={colors.tealColor}/>
+              <p >{'lenaryapolova2@gmail.com'}</p>
+            </PhoneWrap>
+            <PhoneWrap href={'tel:330625744735'}> 
+              <BsTelephone size={20} color={colors.tealColor}/>
+              <p >{'+330625744735'}</p>
+            </PhoneWrap>
+            <PhoneWrap href={'https://wa.me/+380959021066'} target='_blank'>
+              <FaWhatsapp size={20} color={colors.whatsapp}/>
+              <p >{'+380959021066'}</p>
+            </PhoneWrap>
+            <PhoneWrap href={'viber://chat?number=+380959021066'} target='_blank'>
+              <FaViber size={20} color={colors.viber}/>
+              <p >{'+380959021066'}</p>
+            </PhoneWrap>
+            <PhoneWrap href={'https://t.me/+380959021066'} target='_blank'>
+              <FaTelegram size={20} color={colors.telegram}/>
+              <p >{'+380959021066'}</p>
+            </PhoneWrap>
+           
             <Copy>{`Copyright © ${new Date().getFullYear()} Celebration decor. All rights reserved.`}</Copy>
         </Content>
         {isContactModal && <Modal closeModal={()=>setIsContactModal(false)}/>}

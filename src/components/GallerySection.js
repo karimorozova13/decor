@@ -44,7 +44,7 @@ const GallerySection = () => {
     <Container>
         <Content>
             <Title>{'Whatever you can dream up that has to do with us'}</Title>
-            <Btn href={'/gallery?category=all'}>{'View our work'}</Btn>
+            <Btn href={'/gallery?category=wedding'}>{'View our work'}</Btn>
         </Content>
     </Container>
    </Section>

@@ -9,6 +9,8 @@ import Subtitle from "./generic/Subtitle";
 import CommonImage from "./generic/CommonImage";
 import styled from "styled-components";
 import useWindowSize from "../../utils/hooks/useWindowSize";
+import {useEffect} from "react"
+import React from "react";
 
 const Content = styled.div`
 width: 100%;
@@ -31,7 +33,9 @@ margin-top: -130px;
 
 const MeetUs = ()=> {
     const {width} = useWindowSize()
-return <Section pt={0} pb={0} bg={colors.mainWhite} borderBottom={colors.border}>
+  
+return <div id="about">
+<Section pt={0} pb={0} bg={colors.mainWhite} borderBottom={colors.border} >
                 <Container>
             <Content>
 
@@ -40,17 +44,17 @@ return <Section pt={0} pb={0} bg={colors.mainWhite} borderBottom={colors.border}
                             <Title title={"Meet us"} mb={30}/>
                             <Subtitle pb={10}
                                 des={
-                                    "We started decorating events in Ukraine, since 2014"
+                                    "In 2014 we started events decoration in Ukraine."
                                 }
                                 />
                                 <Subtitle pb={10}
                                 des={
-                                "Now, our business of heart is in Europe, France"
+                                "Since 2022 we are operating in France."
                                 }
                             />
                             <Subtitle pb={10}
                                 des={
-                                    "We adore the festive atmosphere, flowers, natural materials, romantic details"
+                                    "We love festive atmosphere, flowers, natural materials and romantic details"
                                 }
                             />
                         </LeftSide>
@@ -63,7 +67,7 @@ return <Section pt={0} pb={0} bg={colors.mainWhite} borderBottom={colors.border}
                     </Sides>
                     </Content>
                 </Container>
-</Section>
+</Section></div>
 }
 
 export default MeetUs;

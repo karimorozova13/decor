@@ -57,7 +57,7 @@ const Hero = () => {
             <Title title={"Hi! We are Celebration decor"} />
             <Subtitle
               des={
-                "Our team helping make your event - inspiring"
+                "Our team is helping you making your event unforgettable"
               }
             />
           </RightSide>

@@ -6,6 +6,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 import { colors } from "@/config/colors";
 import SocialMediaList from "./SocialMediaList";
+import { FaWhatsapp , FaViber, FaTelegram} from "react-icons/fa6";
 
 
 const Backdrop = styled.div`
@@ -85,6 +86,16 @@ const Modal = ({ closeModal = () => {} }) => {
                 <p>{'+357-99797975'}</p></Item>
             <Item href={'mailto:lena@gmail.com'}>
                 <TfiEmail/><p>{'lena@gmail.com'}</p></Item>
+
+                <Item href={'https://wa.me/+380959021066'} target='_blank'>
+                <FaWhatsapp size={20} color={colors.whatsapp}/>
+              <p >{'+380959021066'}</p></Item>
+                <Item href={'viber://chat?number=+380959021066'} target='_blank'>
+                <FaViber size={20} color={colors.viber}/>
+              <p >{'+380959021066'}</p></Item>
+                <Item href={'https://t.me/+380959021066'} target='_blank'>
+                <FaTelegram size={20} color={colors.telegram}/>
+              <p >{'+380959021066'}</p></Item>
                 <SocialMediaList/>
             
       </Wrap>

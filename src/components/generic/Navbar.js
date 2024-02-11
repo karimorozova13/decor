@@ -6,6 +6,9 @@ import { colors } from "@/config/colors";
 import Container from "./Container";
 import { RiContactsLine } from "react-icons/ri";
 import Modal from "./Modal";
+import NavbarLinks from "./NavbarLinks";
+import { useRef } from "react";
+import useOnClickOutside from "../../../utils/hooks/useOnClickOutside";
 
 const Wrap = styled.div`
   position: absolute;
@@ -27,6 +30,7 @@ gap: 10px;
 padding: 10px 0;
 `
 const MenuIcon = styled.div`
+position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,12 +71,13 @@ const LogIcon = styled.div`
   }
 `;
 
-const Header = () => {
+const Navbar = () => {
   const [isSubmenu, setIsSubmenu] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  console.log(isSubmenu);
+  const ref = useRef()
+  useOnClickOutside(ref, ()=>setIsSubmenu(false))
   return (
-    <Wrap>
+    <Wrap ref={ref}>
       <Container>
 <Icons>
 
@@ -85,8 +90,10 @@ const Header = () => {
 </Icons>
       </Container>
       {isLogin && <Modal closeModal={()=> setIsLogin(false)}/>}
+      {isSubmenu && <NavbarLinks openModal={()=>setIsLogin(true)} closeMenu={()=>setIsSubmenu(false)}/>}
+
     </Wrap>
   );
 };
 
-export default Header;
+export default Navbar;

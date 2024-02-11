@@ -33,11 +33,11 @@ background-color: ${colors.secodaryText};
 const SocialMediaList = () => {
   return (
     <SocialMedia>
-    <Icon href={'https://www.instagram.com/'} target='_blank'>
+    <Icon href={'https://www.instagram.com/im.celebration?igsh=MXhwa2xzeGw5dDhqMg=='} target='_blank'>
         <FaInstagram size={25} />
     </Icon>
     <Line/>
-    <Icon href={'https://www.facebook.com/'} target='_blank'>
+    <Icon href={'https://www.facebook.com/profile.php?id=61550262813561'} target='_blank'>
         <FaFacebookF size={25} />
     </Icon>
 </SocialMedia>
