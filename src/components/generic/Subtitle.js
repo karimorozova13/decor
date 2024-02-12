@@ -1,13 +1,14 @@
-import { colors } from "@/config/colors";
 import React from "react";
 import styled from "styled-components";
+
+import { colors } from "@/config/colors";
 
 const Des = styled.h2`
   font-size: 18px;
   line-height: 1.33;
   color: ${colors.secodaryText};
   position: relative;
-  padding-bottom: ${({pb})=>`${pb}px`};
+  padding-bottom: ${({ pb }) => `${pb}px`};
   &::after {
     content: "";
     position: absolute;
@@ -20,12 +21,12 @@ const Des = styled.h2`
     border-radius: 3px;
     display: block;
   }
-  @media only screen  and (max-width: 767px) {
+  @media only screen and (max-width: 767px) {
     text-align: center;
   }
 `;
 
-const Subtitle = ({ des, pb=20 }) => {
+const Subtitle = ({ des, pb = 20 }) => {
   return <Des pb={pb}>{des}</Des>;
 };
 

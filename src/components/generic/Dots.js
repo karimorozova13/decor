@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+
 import { colors } from "../../config/colors";
 
 const DotsWrap = styled.div`
@@ -23,13 +24,16 @@ const BtnDot = styled.button`
 `;
 const Dots = ({ currentIdx, changeIdx, dotsQuantity }) => {
   const [actualIdx, setActualIdx] = useState(0);
+
   const setCurrentIdx = (i) => {
     setActualIdx(i);
     changeIdx(i);
   };
+
   useEffect(() => {
     setActualIdx(currentIdx);
   }, [currentIdx]);
+
   return (
     <DotsWrap>
       {dotsQuantity.map((el, i) => {
@@ -46,9 +50,3 @@ const Dots = ({ currentIdx, changeIdx, dotsQuantity }) => {
   );
 };
 export default Dots;
-
-
-
-
-
-

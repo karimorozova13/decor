@@ -1,36 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRef } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 import styled from "styled-components";
 import { TbMenu } from "react-icons/tb";
-import { CiLock, CiUnlock } from "react-icons/ci";
-import { colors } from "@/config/colors";
-import Container from "./Container";
 import { RiContactsLine } from "react-icons/ri";
+
+import { colors } from "@/config/colors";
+import useOnClickOutside from "../../../utils/hooks/useOnClickOutside";
+
+import Container from "./Container";
 import Modal from "./Modal";
 import NavbarLinks from "./NavbarLinks";
-import { useRef } from "react";
-import useOnClickOutside from "../../../utils/hooks/useOnClickOutside";
 
 const Wrap = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  @media only screen  and (max-width: 767px) {
-    background-color: ${colors.bgAlpha};
-
+  z-index: 2;
+  background-color: ${({ bg }) => bg};
+  @media only screen and (max-width: 767px) {
+    background-color: ${({ bg }) => bg};
   }
-z-index:2;
- 
+`;
+const InnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  position: relative;
+`;
+const Logo = styled(Link)`
+  text-decoration: none;
+  color: ${colors.secodaryText};
+  font-family: "Georgia Italic", cursive;
+  font-style: italic;
+  font-size: 24px;
+  min-width: 200px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid ${colors.tealColor};
 `;
 const Icons = styled.div`
-width: 100%;
-display: flex;
-justify-content: flex-end;
-gap: 10px;
-padding: 10px 0;
-`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 0;
+`;
 const MenuIcon = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,9 +59,9 @@ position: relative;
   svg {
     transition: 250ms cubic-bezier(0.23, 1, 0.32, 1);
   }
-  :hover {
+  &:hover {
     svg {
-      color: ${colors.mainWhite};
+      color: ${colors.tealColor};
     }
   }
   @media only screen and (max-width: 767px) {
@@ -60,9 +79,9 @@ const LogIcon = styled.div`
     transition: 250ms cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  :hover {
+  &:hover {
     svg {
-      color: ${colors.mainWhite};
+      color: ${colors.tealColor};
     }
   }
   @media only screen and (max-width: 991px) {
@@ -74,24 +93,51 @@ const LogIcon = styled.div`
 const Navbar = () => {
   const [isSubmenu, setIsSubmenu] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  const ref = useRef()
-  useOnClickOutside(ref, ()=>setIsSubmenu(false))
+  const [bg, setBg] = useState("transparent");
+
+  const router = useRouter();
+  const ref = useRef();
+
+  useOnClickOutside(ref, () => setIsSubmenu(false));
+  useEffect(() => {
+    router.pathname === "/gallery"
+      ? setBg(colors.mainAccent)
+      : setBg(colors.bgAlpha);
+  }, [router.pathname]);
+
   return (
-    <Wrap ref={ref}>
+    <Wrap ref={ref} bg={bg}>
       <Container>
-<Icons>
+        <InnerContainer>
+          {router.pathname === "/gallery" && (
+            <Logo href={"/"}>{"Celebration decor"}</Logo>
+          )}
 
-      <MenuIcon isSubmenu={isSubmenu} onClick={() => setIsSubmenu(!isSubmenu)}>
-        <TbMenu size={30} />
-      </MenuIcon>
-      <LogIcon onClick={() => setIsLogin(!isLogin)}>
-      <RiContactsLine size={20}/>
-      </LogIcon>
-</Icons>
+          <Icons>
+            <MenuIcon
+              isSubmenu={isSubmenu}
+              onClick={() => setIsSubmenu(!isSubmenu)}
+            >
+              <TbMenu size={30} />
+            </MenuIcon>
+            <LogIcon
+              onClick={() => {
+                setIsLogin(!isLogin);
+                setIsSubmenu(false);
+              }}
+            >
+              <RiContactsLine size={20} />
+            </LogIcon>
+          </Icons>
+          {isSubmenu && (
+            <NavbarLinks
+              openModal={() => setIsLogin(true)}
+              closeMenu={() => setIsSubmenu(false)}
+            />
+          )}
+        </InnerContainer>
       </Container>
-      {isLogin && <Modal closeModal={()=> setIsLogin(false)}/>}
-      {isSubmenu && <NavbarLinks openModal={()=>setIsLogin(true)} closeMenu={()=>setIsSubmenu(false)}/>}
-
+      {isLogin && <Modal closeModal={() => setIsLogin(false)} />}
     </Wrap>
   );
 };

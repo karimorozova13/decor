@@ -1,8 +1,7 @@
 import styled from "styled-components";
-
-import { colors } from "@/config/colors";
 import Link from "next/link";
 
+import { colors } from "@/config/colors";
 
 const Popup = styled.div`
   position: absolute;
@@ -19,13 +18,11 @@ const Popup = styled.div`
 `;
 const Des = styled(Link)`
   color: ${colors.secodaryText};
+  text-decoration: none;
   position: relative;
   cursor: pointer;
-  :hover::after {
-    opacity: 1;
-  }
 
-  ::after {
+  &::after {
     content: "";
     opacity: 0;
     position: absolute;
@@ -36,68 +33,65 @@ const Des = styled(Link)`
     background-color: ${colors.tealColor};
     z-index: 1;
   }
-  :hover ::after {
-    opacity: 1;
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
   }
 `;
 
-const NavbarLinks = ({ closeMenu,openModal }) => {
-
+const NavbarLinks = ({ closeMenu, openModal }) => {
   return (
-      <Popup 
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            closeMenu();
-          }
+    <Popup
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          closeMenu();
+        }
+      }}
+    >
+      <Des
+        onClick={() => {
+          closeMenu();
         }}
+        href={"/#about"}
       >
-          <Des
-            onClick={() => {
-              closeMenu();
-            }}
-            href={'#about'}
-          >
-            {"Meet us"}
-          </Des>
-          <Des
-            onClick={() => {
-              closeMenu();
-            }}
-            href={'#what'}
+        {"Meet us"}
+      </Des>
+      <Des
+        onClick={() => {
+          closeMenu();
+        }}
+        href={"/#what"}
+      >
+        {"Explore Our Services"}
+      </Des>
+      <Des
+        onClick={() => {
+          closeMenu();
+        }}
+        href={"/#reviews"}
+      >
+        {"Our reviews"}
+      </Des>
+      <Des
+        onClick={() => {
+          closeMenu();
+        }}
+        href={{ pathname: "/gallery", query: { category: "Wedding" } }}
+      >
+        {"View our work"}
+      </Des>
 
-          >
-            {"Explore Our Services"}
-          </Des>
-          <Des
-            onClick={() => {
-              closeMenu();
-            }}
-            href={'#reviews'}
-
-          >
-            {"Our reviews"}
-          </Des>
-          <Des
-            onClick={() => {
-              closeMenu();
-            }}
-            href={'/gallery'}
-          >
-            {"View our work"}
-          </Des>
-          
-          <Des
-            onClick={() => {
-            openModal()
-              closeMenu();
-            }}
-            as={'div'}
-          >
-            {"Contact us"}
-          </Des>
-         
-       
-      </Popup>
+      <Des
+        onClick={() => {
+          openModal();
+          closeMenu();
+        }}
+        as={"div"}
+      >
+        {"Contact us"}
+      </Des>
+    </Popup>
   );
 };
 

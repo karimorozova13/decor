@@ -6,13 +6,19 @@ const Wrap = styled.div`
   padding-bottom: ${({ pb }) => `${pb}px`};
   background-color: ${({ bg }) => bg};
   position: relative;
-  border-bottom:${({borderBottom})=>`2px solid ${borderBottom}`};
-
+  border-bottom: ${({ borBot }) => `2px solid ${borBot}`};
 `;
 
-const Section = ({ pt = 50, pb = 150, bg, children, className,borderBottom='transparent',}) => {
+const Section = ({
+  pt = 50,
+  pb = 150,
+  bg,
+  children,
+  className,
+  borBot = "transparent",
+}) => {
   return (
-    <Wrap pt={pt} pb={pb} bg={bg} className={className}  borderBottom={borderBottom} >
+    <Wrap pt={pt} pb={pb} bg={bg} className={className} borBot={borBot}>
       {children}
     </Wrap>
   );

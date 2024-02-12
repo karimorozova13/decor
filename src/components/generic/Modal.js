@@ -1,13 +1,12 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaPhoneAlt } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
-import { colors } from "@/config/colors";
-import SocialMediaList from "./SocialMediaList";
-import { FaWhatsapp , FaViber, FaTelegram} from "react-icons/fa6";
+import { FaWhatsapp, FaViber, FaTelegram } from "react-icons/fa6";
 
+import { colors } from "@/config/colors";
+
+import SocialMediaList from "./SocialMediaList";
 
 const Backdrop = styled.div`
   position: fixed;
@@ -35,7 +34,7 @@ const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-    justify-content: center;
+  justify-content: center;
   align-items: center;
   border-radius: 15px;
   box-shadow: ${colors.boxShadow};
@@ -45,30 +44,22 @@ const Wrap = styled.div`
   }
 `;
 const Item = styled(Link)`
-
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 5px;
-text-decoration: none;
-color: ${colors.mainText};
-transition: 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-font-size: 18px;
-:hover {
-    color: ${colors.tealColor};
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-decoration: none;
+  color: ${colors.mainText};
+  transition: 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 18px;
+  &:hover {
     p {
-        text-decoration: underline;
+      text-decoration: underline;
     }
-}
-`
+  }
+`;
 
 const Modal = ({ closeModal = () => {} }) => {
-  const router = useRouter();
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  
   return (
     <Backdrop
       onClick={(e) => {
@@ -78,26 +69,28 @@ const Modal = ({ closeModal = () => {} }) => {
       }}
     >
       <Wrap>
-      
+        <Item href={"tel:35799797975"}>
+          <FaPhoneAlt color={colors.tealColor} size={20} />
+          <p>{"+357-99797975"}</p>
+        </Item>
+        <Item href={"mailto:lena@gmail.com"}>
+          <TfiEmail color={colors.tealColor} size={20} />
+          <p>{"lena@gmail.com"}</p>
+        </Item>
 
-
-            <Item href={'tel:35799797975'}>
-                <FaPhoneAlt/>
-                <p>{'+357-99797975'}</p></Item>
-            <Item href={'mailto:lena@gmail.com'}>
-                <TfiEmail/><p>{'lena@gmail.com'}</p></Item>
-
-                <Item href={'https://wa.me/+380959021066'} target='_blank'>
-                <FaWhatsapp size={20} color={colors.whatsapp}/>
-              <p >{'+380959021066'}</p></Item>
-                <Item href={'viber://chat?number=+380959021066'} target='_blank'>
-                <FaViber size={20} color={colors.viber}/>
-              <p >{'+380959021066'}</p></Item>
-                <Item href={'https://t.me/+380959021066'} target='_blank'>
-                <FaTelegram size={20} color={colors.telegram}/>
-              <p >{'+380959021066'}</p></Item>
-                <SocialMediaList/>
-            
+        <Item href={"https://wa.me/+380959021066"} target="_blank">
+          <FaWhatsapp size={20} color={colors.whatsapp} />
+          <p>{"+380959021066"}</p>
+        </Item>
+        <Item href={"viber://chat?number=+380959021066"} target="_blank">
+          <FaViber size={20} color={colors.viber} />
+          <p>{"+380959021066"}</p>
+        </Item>
+        <Item href={"https://t.me/+380959021066"} target="_blank">
+          <FaTelegram size={20} color={colors.telegram} />
+          <p>{"+380959021066"}</p>
+        </Item>
+        <SocialMediaList />
       </Wrap>
     </Backdrop>
   );
